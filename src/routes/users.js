@@ -1,4 +1,5 @@
 const express = require('express')
+const passport = require('passport')
 const router = express.Router()
 const User = require('../models/User')
 
@@ -42,13 +43,20 @@ router.post('/users/signup', async (req, res) => {
         if(emailUser){
             req.flash('error_msg','This email already exist.');
             res.redirect('/users/signup');
+        }else{
+            const newUser = new User({name, email, password});
+            newUser.password = await newUser.encryptPassword(password);
+            await newUser.save();
+            req.flash('success_msg', 'You have been registered!');
+            res.redirect('/users/signin');
         }
-        const newUser = new User({name, email, password});
-        newUser.password = await newUser.encryptPassword(password);
-        await newUser.save();
-        req.flash('success_msg', 'You have been registered!');
-        res.redirect('/users/signin');
     }
 })
+
+router.post('/users/signin', passport.authenticate('local', {
+    successRedirect:'/notes',
+    failureRedirect:'/users/signin',
+    failureFlash: true
+}));
 
 module.exports = router;
