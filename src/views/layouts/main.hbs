@@ -7,6 +7,8 @@
     <title>Notes App</title>
     {{!-- BOOTSTRAP 5.2 --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    {{!-- FONT AWESOME KIT --}}
+    <script src="https://kit.fontawesome.com/a8fe3988ee.js" crossorigin="anonymous"></script>
     {{!-- CSS JAVASCRIPT --}}
     <link rel="stylesheet" href="/css/main.css">
 </head>
@@ -14,6 +16,8 @@
     <p>NavBar</p>
     
     <main class="container">
+        {{> messages }}
+        {{> errors}}
         {{{ body }}}
     </main>
 

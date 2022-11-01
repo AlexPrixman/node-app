@@ -11,13 +11,13 @@ body {
     border-radius:5px 
 }
 
-.eav-form {
-    flex-direction: column;
-    justify-content:space-between
-}
-
 .eav-form .form-group {
     flex-direction: column;
     justify-content:space-between;
     padding:5px
+}
+
+.card .card-body .card-title img {
+    flex-direction:row;
+    justify-content:space-between; 
 }
