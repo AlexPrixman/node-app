@@ -1,3 +1,4 @@
+const dotenv = require('dotenv');
 const express = require('express');
 const path = require('path');
 const exphbs = require('express-handlebars');
@@ -7,6 +8,7 @@ const flash = require('connect-flash');
 const passport = require('passport');
 
 //Initialization
+dotenv.config();
 const app = express();
 require('./database');
 require('./config/passport');
